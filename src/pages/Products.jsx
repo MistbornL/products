@@ -141,7 +141,14 @@ export const Products = () => {
             })}
           </tbody>
         </table>
-        <button className="btn btn-primary">Create New Product</button>
+        <button
+          onClick={() => {
+            navigate(`/create`);
+          }}
+          className="btn btn-primary"
+        >
+          Create New Product
+        </button>
       </main>
     </div>
   );

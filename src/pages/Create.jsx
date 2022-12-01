@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { Menu } from "../components/Menu";
 import { Data } from "../data/DummyData";
 
-export const Edit = () => {
+export const Create = () => {
   const { id } = useParams();
   const [product, setProduct] = useState();
   const name = useRef();
@@ -11,7 +11,7 @@ export const Edit = () => {
   const color = useRef();
   const price = useRef();
   const [loading, setLoading] = useState(true);
-  // const products = JSON.parse(localStorage.getItem("products"));
+  const navigate = useNavigate();
 
   useState(() => {
     const filter = Data.filter((product) => {
@@ -24,6 +24,17 @@ export const Edit = () => {
     setLoading(false);
   }, [loading]);
 
+  const create = (e) => {
+    e.preventDefault();
+    Data.push({
+      id: Data.length + 1,
+      name: name.current.value,
+      number: number.current.value,
+      color: color.current.value,
+      listPrice: price.current.value,
+    });
+    alert("added new product");
+  };
   return (
     <div className="app">
       <header>
@@ -36,56 +47,74 @@ export const Edit = () => {
           <h1>Loading</h1>
         ) : (
           <form
-            onSubmit={edit}
-            style={{ width: "400px", margin: "0" }}
-            className="container needs-validation"
-            noValidate
+            onSubmit={create}
+            style={{ width: "700px" }}
+            className="needs-validation mt-4"
           >
             <div className="form-outline d-flex justify-content-between  mb-3">
               <p>Name</p>
               <input
+                required
+                style={{ width: "300px" }}
                 ref={name}
                 type="text"
-                id="form12"
-                className="form-control-sm"
+                className="form-control"
               />
             </div>
+            <div className="invalid-feedback">Please fill out this field.</div>
 
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>Product Number</p>
               <input
+                required
+                style={{ width: "300px" }}
                 ref={number}
                 type="text"
                 id="form12"
-                className="form-control-sm"
+                className="form-control"
               />
             </div>
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>Color</p>
               <input
+                required
+                style={{ width: "300px" }}
                 ref={color}
                 type="text"
                 id="form12"
-                className="form-control-sm"
+                className="form-control"
               />
             </div>
 
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>List Price</p>
               <input
+                required
+                style={{ width: "300px" }}
                 ref={price}
                 type="text"
                 id="form12"
-                className="form-control-sm"
+                className="form-control"
               />
             </div>
 
-            <div className="d-flex justify-content-end mt-2">
-              <button type="submit" className="btn btn-success">
+            <div className="d-flex justify-content-end mt-2 gap-2">
+              <button
+                onClick={create}
+                type="submit"
+                className="btn btn-success"
+              >
                 Save
               </button>
-              <button className="btn btn">Back To List</button>
-              <button className="btn btn-primary">Delete</button>
+              <button
+                onClick={() => navigate("/")}
+                className="btn btn-secondary"
+              >
+                Back To List
+              </button>
+              <button onClick={() => navigate("/")} className="btn btn-primary">
+                Cancel
+              </button>
             </div>
           </form>
         )}
