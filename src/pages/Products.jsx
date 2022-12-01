@@ -46,16 +46,31 @@ export const Products = () => {
           );
         })
       );
-    } else if (priceFrom.current.value >= 1000) {
+    } else if (
+      priceFrom.current.value >= 1000 &&
+      priceTo.current.value === undefined
+    ) {
       setTable(
         table.filter((data) => {
           return data.listPrice >= 1000;
         })
       );
-    } else if (priceFrom.current.value <= 1000) {
+    } else if (
+      priceFrom.current.value <= 1000 &&
+      priceTo.current.value === undefined
+    ) {
       setTable(
         table.filter((data) => {
           return data.listPrice <= 1000;
+        })
+      );
+    } else if (priceFrom.current.value && priceTo.current.value) {
+      setTable(
+        table.filter((data) => {
+          return (
+            data.listPrice >= priceFrom.current.value &&
+            data.listPrice <= priceTo.current.value
+          );
         })
       );
     }
@@ -122,7 +137,7 @@ export const Products = () => {
                       onClick={() => {
                         navigate(`/edit/${product.id}`);
                       }}
-                      style={{ background: "grey" }}
+                      style={{ background: "grey", marginRight: "4px" }}
                       className="btn"
                     >
                       Edit

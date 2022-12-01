@@ -4,7 +4,7 @@ export const Data = [
     name: "HL Road Frame - Black, 58",
     number: "FR-R82B-58",
     color: "Black",
-    listPrice: 1431.5,
+    listPrice: 1200.5,
     modifiedDate: "11 November 2021",
   },
   {
@@ -20,7 +20,7 @@ export const Data = [
     name: "HL Road Frame - Red, 44",
     number: "FR-R82R-62",
     color: "Red",
-    listPrice: 1431.5,
+    listPrice: 1331.5,
     modifiedDate: "06 August 2021",
   },
   {
@@ -28,7 +28,7 @@ export const Data = [
     name: "HL Road Frame - Red, 52",
     number: "FR-R82R-44",
     color: "Red",
-    listPrice: 1431.5,
+    listPrice: 800,
     modifiedDate: "18 december 2021",
   },
   {
@@ -36,7 +36,7 @@ export const Data = [
     name: "HL Road Frame - Red, 56",
     number: "FR-R82R-48",
     color: "Red",
-    listPrice: 1431.5,
+    listPrice: 500,
     modifiedDate: "01 December 2021",
   },
   {
