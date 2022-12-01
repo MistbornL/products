@@ -11,6 +11,7 @@ export const Edit = () => {
   const color = useRef();
   const price = useRef();
   const [loading, setLoading] = useState(true);
+  // const products = JSON.parse(localStorage.getItem("products"));
 
   useState(() => {
     const filter = Data.filter((product) => {
@@ -21,23 +22,7 @@ export const Edit = () => {
 
   useEffect(() => {
     setLoading(false);
-    if (loading === false) {
-      name.current.value = product.name;
-      number.current.value = product.number;
-      color.current.value = product.color;
-      price.current.value = product.listPrice;
-    }
   }, [loading]);
-
-  const edit = (e) => {
-    e.preventDefault();
-    const index = Data.findIndex((obj) => obj.id === parseInt(id));
-    Data[index].name = name.current.value;
-    Data[index].color = color.current.value;
-    Data[index].number = number.current.value;
-    Data[index].listPrice = price.current.value;
-    console.log(Data);
-  };
 
   return (
     <div className="app">
