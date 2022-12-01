@@ -11,6 +11,7 @@ export const Edit = () => {
   const color = useRef();
   const price = useRef();
   const [loading, setLoading] = useState(true);
+  // const products = JSON.parse(localStorage.getItem("products"));
 
   useState(() => {
     const filter = Data.filter((product) => {
@@ -29,6 +30,16 @@ export const Edit = () => {
     }
   }, [loading]);
 
+  const edit = (e) => {
+    e.preventDefault();
+    const index = Data.findIndex((obj) => obj.id === parseInt(id));
+    Data[index].name = name.current.value;
+    Data[index].color = color.current.value;
+    Data[index].number = number.current.value;
+    Data[index].listPrice = price.current.value;
+    console.log(Data);
+  };
+
   return (
     <div className="app">
       <header>
@@ -40,7 +51,12 @@ export const Edit = () => {
         {loading ? (
           <h1>Loading</h1>
         ) : (
-          <div style={{ width: "400px", margin: "0" }} className="container">
+          <form
+            onSubmit={edit}
+            style={{ width: "400px", margin: "0" }}
+            className="container needs-validation"
+            noValidate
+          >
             <div className="form-outline d-flex justify-content-between  mb-3">
               <p>Name</p>
               <input
@@ -50,6 +66,7 @@ export const Edit = () => {
                 className="form-control-sm"
               />
             </div>
+
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>Product Number</p>
               <input
@@ -80,11 +97,13 @@ export const Edit = () => {
             </div>
 
             <div className="d-flex justify-content-end mt-2">
-              <button className="btn btn-success">Save</button>
+              <button type="submit" className="btn btn-success">
+                Save
+              </button>
               <button className="btn btn">Back To List</button>
               <button className="btn btn-primary">Delete</button>
             </div>
-          </div>
+          </form>
         )}
       </main>
     </div>

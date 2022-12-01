@@ -5,6 +5,9 @@ import { Data } from "../data/DummyData";
 
 export const Products = () => {
   const navigate = useNavigate();
+  // localStorage.setItem("products", JSON.stringify(Data));
+  const products = JSON.parse(localStorage.getItem("products"));
+  console.log(products);
   return (
     <div className="App">
       <header>
@@ -28,7 +31,7 @@ export const Products = () => {
             </tr>
           </thead>
           <tbody>
-            {Data.map((product) => {
+            {products.map((product) => {
               return (
                 <tr key={product.id}>
                   <th scope="row">{product.name}</th>
@@ -46,7 +49,14 @@ export const Products = () => {
                     >
                       Edit
                     </button>
-                    <button className="btn btn-danger">delete</button>
+                    <button
+                      onClick={() => {
+                        navigate(`/delete/${product.id}`);
+                      }}
+                      className="btn btn-danger"
+                    >
+                      delete
+                    </button>
                   </td>
                 </tr>
               );
