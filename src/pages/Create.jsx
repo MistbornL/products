@@ -34,6 +34,7 @@ export const Create = () => {
       listPrice: price.current.value,
     });
     alert("added new product");
+    navigate("/");
   };
   return (
     <div className="app">
@@ -99,11 +100,7 @@ export const Create = () => {
             </div>
 
             <div className="d-flex justify-content-end mt-2 gap-2">
-              <button
-                onClick={create}
-                type="submit"
-                className="btn btn-success"
-              >
+              <button type="submit" className="btn btn-success">
                 Save
               </button>
               <button

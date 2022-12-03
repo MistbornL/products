@@ -35,17 +35,17 @@ export const Menu = () => {
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#!">
+            <a className="nav-link" href="/customers">
               Customers
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#!">
+            <a className="nav-link" href="/orders">
               Orders
             </a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#!">
+            <a className="nav-link" href="/reports">
               Reports
             </a>
           </li>

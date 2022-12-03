@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Menu } from "../components/Menu";
 import { Data } from "../data/DummyData";
 
@@ -17,6 +17,13 @@ export const Delete = () => {
     setProduct(filter[0]);
   }, [product]);
 
+  const deleteItem = (e) => {
+    e.preventDefault();
+    const index = Data.findIndex((obj) => obj.id === parseInt(id));
+    Data.splice(index, 1);
+    alert("item is deleted");
+    navigate("/");
+  };
   return (
     <div className="app">
       <header>
@@ -60,7 +67,9 @@ export const Delete = () => {
               <p>{product.listPrice}</p>
             </div>
             <div className="d-flex gap-2 bottom mt-5">
-              <button className="btn btn-danger">Delete Product</button>
+              <button onClick={deleteItem} className="btn btn-danger">
+                Delete Product
+              </button>
               <button onClick={() => navigate("/")} className="btn btn-primary">
                 Cancel - Back To List
               </button>

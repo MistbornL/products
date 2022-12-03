@@ -67,6 +67,7 @@ export const Edit = () => {
             <div className="form-outline d-flex justify-content-between  mb-3">
               <p>Name</p>
               <input
+                required
                 style={{ width: "300px" }}
                 ref={name}
                 type="text"
@@ -78,6 +79,7 @@ export const Edit = () => {
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>Product Number</p>
               <input
+                required
                 style={{ width: "300px" }}
                 ref={number}
                 type="text"
@@ -88,6 +90,7 @@ export const Edit = () => {
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>Color</p>
               <input
+                required
                 style={{ width: "300px" }}
                 ref={color}
                 type="text"
@@ -99,6 +102,7 @@ export const Edit = () => {
             <div className="form-outline d-flex justify-content-between mb-3">
               <p>List Price</p>
               <input
+                required
                 style={{ width: "300px" }}
                 ref={price}
                 type="text"

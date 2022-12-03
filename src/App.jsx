@@ -6,6 +6,9 @@ import { Products } from "./pages/Products";
 import { Edit } from "./pages/Edit";
 import { Delete } from "./pages/Delete";
 import { Create } from "./pages/Create";
+import { Reports } from "./pages/Reports";
+import { Customers } from "./pages/Customers";
+import { Orders } from "./pages/Orders";
 
 function App() {
   return (
@@ -14,6 +17,9 @@ function App() {
       <Route path="/edit/:id" element={<Edit />} />
       <Route path="/create" element={<Create />} />
       <Route path="/delete/:id" element={<Delete />} />
+      <Route path="/customers" element={<Customers />} />
+      <Route path="/orders" element={<Orders />} />
+      <Route path="/reports" element={<Reports />} />
     </Routes>
   );
 }
